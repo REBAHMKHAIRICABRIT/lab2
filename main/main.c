@@ -84,16 +84,16 @@ void vTaskFunction_1(void *pvParameters) {
 void vTaskFunction_2(void *pvParameters) {
       DISPLAY("task 2 : Start");
       uint32_t *receivedMessage = NULL;
-
+    static const char* TAG = "msgTimeOut"
       // Wait for message
       for(;;){
-            if(xQueueReceive(xQueue_1, &receivedMessage, 30) == pdPASS){
+            if(xQueueReceive(xQueue_1, &receivedMessage, pdTICKS_TO_MS(30)) == pdPASS){
                   DISPLAYI(LOG_COLOR_GREEN,"Task 2 : Received %d from the queue",(int)receivedMessage);
             }
             else{
                   DISPLAYE(LOG_COLOR_RED,"Task 2 : Problem while receiveing character, Timeout expired");
             }
-            // Compute time : 3 ticks or 30 ms
+            // Compute time :  30 ms
         COMPUTE_IN_TIME_MS (30) ;
             DISPLAY("task 2 : End");
 
