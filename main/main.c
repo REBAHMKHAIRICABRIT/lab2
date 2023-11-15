@@ -84,7 +84,11 @@ void vTaskFunction_1(void *pvParameters) {
 void vTaskFunction_2(void *pvParameters) {
       DISPLAY("task 2 : Start");
       uint32_t *receivedMessage = NULL;
+<<<<<<< HEAD
     //static const char* TAG = "msgTimeOut"
+=======
+    static const char* TAG = "msgTimeOut"
+>>>>>>> 1497723a707a8daabe66a7d420ce5ef70d06e140
       // Wait for message
       for(;;){
             if(xQueueReceive(xQueue_1, &receivedMessage, pdTICKS_TO_MS(30)) == pdPASS){
